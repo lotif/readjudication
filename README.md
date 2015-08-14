@@ -6,7 +6,8 @@ This is my first project using ReacjJS, AngularJS, NodeJS, MongoDB and Bootstrap
 To start the application:
   1 - Start MongoDB on the /data folder using the following command:
     <path_to_your_mongodb_installation>/bin> mongod --dbpath <path_to_your_git_folder>/readjudication/data
-    1.1 - if you want to know what kind of data to put into MongoDB, check the readjudication/public/data.json file
+    
+  1.1 - if you want to know what kind of data to put into MongoDB, check the readjudication/public/data.json file
     
   2 - Start NodeJS
     <path_to_your_git_folder>/readjudication> npm start
