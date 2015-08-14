@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    h1.
+        Merchant List
+    ul
+        each merchant, i in merchantlist
+            li
+                a(href="mailto:#{merchant.merchantId}")= merchant.nameOfAccount

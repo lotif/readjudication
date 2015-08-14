@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Readjudication</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/startReadjudicationAngular.js"></script>
+	</head>
+	
+	<body>
+		
+		<div ng-app="readjudicationApp" ng-controller="readjudicationPageController">
+		
+			<h1 class="container-fluid page-header" ng-bind="pageTitle"></h1>
+			
+			<div class="container" id="container">
+				<form class="panel panel-primary" role="form">
+				
+					<div class="panel-heading">
+						<h4>Merchant Search Filter</h4>
+					</div>
+					
+					<div class="panel-body">
+						<div class="col-sm-3">
+							<label for="merchantId">Merchant ID</label>
+							<input merchant-id-input type="text" class="form-control" ng-model="merchantForm.merchantId"/>
+						</div>
+						<div class="col-sm-6">
+							<label>Name Of Account</label>
+							<input type="text" class="form-control" ng-model="merchantForm.nameOfAccount"/>
+						</div>
+						<!--<div class="col-sm-6">
+							<label>Contact Phone Number</label>
+							<div class="row">
+								<div class="form-group col-xs-4">
+									<input type="text" class="form-control"/>
+								</div>
+								<div class="form-group col-xs-8">
+									<input type="text" class="form-control"/>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<label>Tax ID</label><br/>
+							<input type="text" class="form-control"/>
+						</div>				
+						<div class="col-sm-3">
+							<label>Principal Last Name</label>
+							<input type="text" class="form-control"/>
+						</div>
+						<div class="col-sm-3">
+							<label>Principal First Name</label>
+							<input type="text" class="form-control"/>
+						</div> -->
+						
+						<div class="col-sm-12">
+							<br/>
+							<input type="submit" value="search" class="btn btn-primary" ng-click="submitSearchAction()"/>
+							<input type="submit" value="reset" class="btn btn-primary" ng-disabled="disableReset()" ng-click="resetAction()"/>
+						</div>
+					</div>
+				</form>
+				<!--<span> test: merchantId='{{merchantForm.merchantId}}', nameOfAccount='{{merchantForm.nameOfAccount}}'</span>-->
+			</div>
+			
+			<img class="center-block" src="images/loading.gif" ng-show="viewControlVariables.showLoading"/>
+			
+			<h3 class="text-center" style="{{messages.isError ? 'color: red' : ''}}"
+				ng-show="viewControlVariables.allowMessage && messages.current.length > 0">
+					{{messages.current}}
+			</h3>
+			
+			<div class="container-fluid">
+				<table class="table table-striped table-hover" ng-show="merchants.length > 0">
+					<th>Readjudication</th>
+					<th>Merchant ID</th>
+					<th>Name Of Account</th>
+					<tbody>
+						<tr ng-repeat="m in merchants | orderBy:'merchantId'">
+							<td>
+								<div>
+									<input type="submit" value="start" class="btn btn-primary btn-sm" 
+										ng-click="startReadjudicationAction(m.merchantId)"/>
+								</div>
+							</td>
+							<td>{{m.merchantId}}</td>
+							<td>{{m.nameOfAccount}}</td>
+						</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
